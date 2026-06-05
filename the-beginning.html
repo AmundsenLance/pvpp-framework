@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Beginning: Original PV-PP Framework Ideas</title>
+  <meta name="description" content="A historical origin page describing the original PV-PP model, its starting postulates, and the early corrections that led to the mature framework." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #17213d;
+      --text: #e8edf8;
+      --muted: #b7c2d9;
+      --accent: #8db3ff;
+      --accent-2: #b8d1ff;
+      --border: #263253;
+      --max: 960px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #09101f 0%, #0d1427 100%);
+      color: var(--text);
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 16, 31, 0.82);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 32px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 2vw, 1.2rem);
+      max-width: 860px;
+    }
+
+    .hero-panel {
+      margin-top: 26px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(23, 33, 61, 0.96) 0%, rgba(18, 26, 48, 0.96) 100%);
+      border-radius: 18px;
+      color: var(--muted);
+    }
+
+    main {
+      padding: 8px 0 72px;
+    }
+
+    section {
+      margin-top: 22px;
+      padding: 26px;
+      background: rgba(18, 26, 48, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.08rem;
+      color: var(--accent-2);
+    }
+
+    p {
+      margin: 10px 0 0;
+    }
+
+    ul, ol {
+      margin: 12px 0 0 20px;
+      padding: 0;
+    }
+
+    li + li { margin-top: 8px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .quote {
+      margin-top: 14px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(23, 33, 61, 0.75);
+      border-radius: 0 12px 12px 0;
+      color: var(--muted);
+    }
+
+    .link-row {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 820px) {
+      .grid { grid-template-columns: 1fr; }
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">PV-PP Framework</div>
+      <nav class="nav-links" aria-label="Section navigation">
+        <a href="#origin">Origin</a>
+        <a href="#postulates">Postulates</a>
+        <a href="#definitions">Definitions</a>
+        <a href="#assertions">Assertions</a>
+        <a href="#corrections">Corrections</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap hero">
+    <div class="eyebrow">Historical Origin</div>
+    <h1>The Beginning: Original PV-PP Framework Ideas</h1>
+    <p class="subtitle">A historical origin page showing how the Productive Value–Productive Power framework began, what the original model claimed, and why later corrections became necessary.</p>
+    <div class="hero-panel">
+      The larger PV-PP framework grew out of a much smaller starting model. That beginning was not yet the mature framework. It did not contain all later distinctions, constraints, or applications. But it did contain the seed insight from which much of the later work grew: human beings live through what passes between them, and societies endure only if they preserve and develop the capacities that make future interaction possible.
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="origin">
+      <h2>Why this beginning matters</h2>
+      <p>The mature PV-PP framework contains a much more developed structure than the idea with which it began. Later work introduced distinctions between value and capacity, present benefit and long-run consequence, perception and reality, available action and viable action, and non-scalar decision structure. It also expanded into institutions, technology, breakdown, recovery, and artificial-agent governance.</p>
+      <p>But the beginning still matters because it shows the original forest-level insight. Before later branches and technical layers were added, the framework started from a much simpler observation: human beings do not survive, develop, or continue alone.</p>
+      <div class="quote">
+        Human beings live through interaction with others, through what passes between them, and through the development of future capable persons.
+      </div>
+    </section>
+
+    <section>
+      <h2>The starting question</h2>
+      <p>The earliest question was about information. Before an exchange can occur, one person must understand what another person is offering, what may happen in the interaction, and whether the other party can be trusted. A cup of coffee may be shown and described as hot. A worker may describe the service he can perform. A parent may explain a rule to a child. A seller may represent the condition of a used car. In each case, information makes the proposed interaction intelligible.</p>
+      <p>Sometimes information is itself the value: a warning, a lesson, a diagnosis, a map, a disclosure, or a trusted record. Sometimes the information is false, incomplete, stale, or misleading. That was the starting point: the things people exchange, and the information that makes those exchanges possible or makes them fail.</p>
+    </section>
+
+    <section id="postulates">
+      <h2>The original four postulates</h2>
+      <ol>
+        <li><strong>Human beings are socially dependent.</strong> Human life and human development are not formed in isolation. The capacities required for life are sustained through interaction with others.</li>
+        <li><strong>People exchange things of value through interaction.</strong> Goods, effort, knowledge, affection, warning, opportunity, burden, money, protection, and harm may all pass between people.</li>
+        <li><strong>People possess differing capacities to produce and use value.</strong> One person may have strength, another knowledge, another savings, tools, judgment, time, relationships, or institutional access.</li>
+        <li><strong>Human continuity depends on both present interaction and future development.</strong> A society must sustain interactions among those alive now and also develop children into future capable adults.</li>
+      </ol>
+    </section>
+
+    <section id="definitions">
+      <h2>The original definitions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Productive Value (PV)</h3>
+          <p class="muted">What passes between people in interaction and matters to them or to what they can later do. Early examples included thoughts, ideas, services, goods, and currencies. Later clarification widened the category to include care, warning, trust, burden, deception, and harm.</p>
+        </div>
+        <div class="card">
+          <h3>Productive Power (PP)</h3>
+          <p class="muted">A person’s capacity to generate, receive, preserve, apply, protect, or recover value. Health, knowledge, skill, memory, attention, judgment, money, tools, trustworthy relationships, institutional access, and recovery capacity all fall within it.</p>
+        </div>
+      </div>
+      <h3>Information</h3>
+      <p>Information describes what is being offered, what has happened, what is expected, and what another person or institution may be able or permitted to do. It may itself be Productive Value. Because information may be wrong, incomplete, stale, or false, information quality is central to interaction.</p>
+    </section>
+
+    <section id="assertions">
+      <h2>Original assertions and early implications</h2>
+      <p>From those postulates and definitions, the original model made a series of simple but fertile claims.</p>
+      <ul>
+        <li>Ordinary life is full of Productive Value exchange, not just purchases and sales.</li>
+        <li>Interactions may change Productive Power, not merely deliver momentary benefit.</li>
+        <li>Information makes exchange possible and can also make it fail.</li>
+        <li>Cooperation can create more capacity than separate action.</li>
+        <li>Developmental transfer forms the future capacity of society.</li>
+      </ul>
+      <p>Even in the early model, this already implied that an economy is larger than the monetary marketplace, that Productive Power can accumulate or decay, that trust matters because it lowers the cost of exchange, that technology changes capability structures, and that immediate benefit and long-run consequence may diverge.</p>
+    </section>
+
+    <section>
+      <h2>A simple example: shared hunting and surplus</h2>
+      <p>The earliest drafts used a simple example. Two people hunt separately and often fail. They discover that one can drive game while the other waits in position. The result is successful coordination that neither could reliably achieve alone.</p>
+      <p>Food passes between them as Productive Value. Knowledge of the plan and each role is information. Their strength, patience, skill, and ability to coordinate are forms of Productive Power. If repeated cooperation produces more food with less wasted effort, they gain not only a meal but preserved strength, skill growth, mutual confidence, and perhaps surplus. That surplus may later support a child, time for tool-building, or recovery after injury.</p>
+      <p>The example was simple on purpose. It showed the seed insight: interaction can produce value now and alter capability later.</p>
+    </section>
+
+    <section id="corrections">
+      <h2>What later had to be corrected</h2>
+      <p>The original model was fertile, but it also overreached in places. Later development did not abandon the original insight. It pruned it.</p>
+
+      <h3>1. Cooperation and procreation were too narrow</h3>
+      <p>The early language treated cooperation and procreation as if they nearly exhausted social life. Later work showed that theft, coercion, punishment, institutional action, solitary preparation, public authority, and artificial-agent execution require distinct treatment.</p>
+
+      <h3>2. Immediate value is not the same as long-run capacity</h3>
+      <p>The early language sometimes blurred value enjoyed in itself with value that builds or preserves future capability. Later work separated the two more carefully.</p>
+
+      <h3>3. Productive Power is not one total net worth</h3>
+      <p>The early model sometimes implied that all capability could be treated as one general total. Later development rejected that simplification. Health, money, trust, safety, knowledge, and recovery do not always collapse into a single meaningful sum.</p>
+
+      <h3>4. Describing capacity change does not automatically settle moral status</h3>
+      <p>The framework can describe how societies justify war, repression, sacrifice, domination, or slavery in terms of collective capacity, preservation, or expansion. That does not mean every such justification is automatically endorsed by the framework. The original model risked sliding too quickly from descriptive social logic to moral conclusion. Later work became more careful about that distinction.</p>
+    </section>
+
+    <section>
+      <h2>The enduring framework</h2>
+      <p>Despite the necessary corrections and all the later complexity, the foundational observation never disappeared. The mature PV-PP framework can only really be understood if the reader first sees how much grew out of a very small original insight.</p>
+      <div class="quote">
+        Human beings live through what passes between them, and societies endure only if they preserve and develop the capacities that make future interaction possible.
+      </div>
+      <div class="link-row">
+        <a class="button" href="index.html">Back to the PV-PP Framework</a>
+        <a class="button" href="worked-example.html">Worked Example</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">PV-PP historical origin page. This page is meant to preserve the original forest-level insight without confusing it with the full mature framework.</div>
+  </footer>
+</body>
+</html>
