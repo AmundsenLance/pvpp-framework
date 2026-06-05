@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The PV-PP Framework</title>
+  <meta name="description" content="The Productive Value–Productive Power (PV-PP) framework is a non-scalar approach to understanding human interaction, decision making, behavior, and viability." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #17213d;
+      --text: #e8edf8;
+      --muted: #b7c2d9;
+      --accent: #8db3ff;
+      --accent-2: #b8d1ff;
+      --border: #263253;
+      --max: 940px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #09101f 0%, #0d1427 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 16, 31, 0.8);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      max-width: 850px;
+    }
+
+    .hero-panel {
+      margin-top: 28px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(23, 33, 61, 0.95) 0%, rgba(18, 26, 48, 0.95) 100%);
+      border-radius: 18px;
+      color: var(--muted);
+    }
+
+    main {
+      padding: 6px 0 72px;
+    }
+
+    section {
+      margin-top: 22px;
+      padding: 26px;
+      background: rgba(18, 26, 48, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.08rem;
+      color: var(--accent-2);
+    }
+
+    p {
+      margin: 10px 0 0;
+    }
+
+    ul {
+      margin: 12px 0 0 20px;
+      padding: 0;
+    }
+
+    li + li { margin-top: 8px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .link-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .link-item {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      border-radius: 14px;
+      color: var(--text);
+    }
+
+    .link-item small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 820px) {
+      .grid,
+      .link-list {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">PV-PP Framework</div>
+      <nav class="nav-links" aria-label="Section navigation">
+        <a href="#why">Why</a>
+        <a href="#core">Core distinctions</a>
+        <a href="#nonscalar">Non-scalar</a>
+        <a href="#studies">What it studies</a>
+        <a href="#entry">Entry points</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap hero">
+    <div class="eyebrow">Canonical Public Explainer</div>
+    <h1>The PV-PP Framework</h1>
+    <p class="subtitle">A non-scalar framework for understanding Productive Value, Productive Power, perception, interaction, and viability.</p>
+    <div class="hero-panel">
+      The Productive Value–Productive Power (PV-PP) framework is a non-scalar approach to understanding human interaction, decision making, behavior, and viability. It distinguishes between the value that is transferred, preserved, lost, or realized in interaction, and the underlying capacities that make such value possible in the first place. Rather than assuming that every relevant factor can be reduced to one compensatory score, the framework treats some conditions as governing, thresholded, or structurally non-tradeable.
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="why">
+      <h2>Why the framework exists</h2>
+      <p>Many ordinary models work well when all relevant differences can be translated into one common metric. But a wide range of real decisions do not behave that way. In many cases, missing authority, failed safety, absent recovery, invalid state, or inadequate evidence cannot simply be offset by gains elsewhere. A result may look locally attractive while remaining structurally unsound.</p>
+      <p>The PV-PP framework was developed to analyze those cases without forcing all domains into one scalar ranking. Its concern is not only what looks beneficial now, but whether the decision preserves the conditions that make continued viability and future value possible.</p>
+    </section>
+
+    <section id="core">
+      <h2>Core distinctions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Productive Value (PV)</h3>
+          <p class="muted">What is transferred, created, preserved, lost, or realized through interaction. This includes goods, services, money, information, warning, care, opportunity, deception, burden, protection, trust, and harm.</p>
+        </div>
+        <div class="card">
+          <h3>Productive Power (PP)</h3>
+          <p class="muted">The structured capacity to generate, receive, preserve, protect, apply, or recover Productive Value. Health, knowledge, skill, judgment, attention, money, tools, institutional access, relationships, and recovery capacity all belong here.</p>
+        </div>
+        <div class="card">
+          <h3>Perceived Productive Power (PPP)</h3>
+          <p class="muted">The interpreted or projected estimate of capability. Because action is often taken on the basis of perceived rather than actual capability, the gap between PP and PPP can become a major source of error, false adequacy, false readiness, false recovery, or failed execution.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="nonscalar">
+      <h2>What makes PV-PP non-scalar</h2>
+      <p>The framework does not assume that every decision can be reduced to one score. In many decision classes, some factors are governing rather than compensatory. Missing authority, broken recovery, failed viability, invalid state, or insufficient evidence may block or reshape a decision before any optimization step is meaningful.</p>
+      <p>The point is not that scalar methods are always wrong. The point is that many real decisions require structural filters and admissibility checks before any ranking among viable options can occur.</p>
+    </section>
+
+    <section id="studies">
+      <h2>What the framework studies</h2>
+      <p>The PV-PP framework studies the relation between value, capability, perception, and viability across a wide range of human and institutional contexts.</p>
+      <ul>
+        <li>interaction and exchange</li>
+        <li>information quality and misperception</li>
+        <li>value versus capacity</li>
+        <li>viability and recovery</li>
+        <li>governing constraints and dynamic boundary conditions</li>
+        <li>human and organizational decision processes</li>
+        <li>agent and AI runtime governance</li>
+      </ul>
+      <p>It is especially concerned with cases where local success, visible completion, or apparent adequacy hides a deeper structural failure.</p>
+    </section>
+
+    <section>
+      <h2>What the framework is not</h2>
+      <ul>
+        <li>It is not a simple utility-maximization model.</li>
+        <li>It is not a one-score ranking system.</li>
+        <li>It is not limited to markets, pricing, or monetary exchange.</li>
+        <li>It is not only an AI governance framework, even though agent runtime applications are one of its current public branches.</li>
+        <li>It is not a settled mainstream academic school.</li>
+      </ul>
+      <p>It remains an active research project with public-facing essays, guides, white papers, demos, and application materials.</p>
+    </section>
+
+    <section>
+      <h2>Current public application areas</h2>
+      <p>Current public materials show the framework being used in at least four broad ways. First, it is used to describe human decision making and behavior in terms of value, capability, perception, and recovery. Second, it is used to analyze information, interaction, and the conditions under which exchanges help or harm future capacity. Third, it has been applied to addiction, recovery, and related mechanisms such as surrender, support, forgiveness, corridor restoration, and the rebuilding of future viability. Fourth, it has been applied to AI agent governance and runtime evaluation, especially the distinction between what is technically available and what is actually viable under authority, evidence, recovery, and state-validity constraints.</p>
+    </section>
+
+    <section id="entry">
+      <h2>Recommended entry points</h2>
+      <p>Readers new to the framework should begin with one public overview and then move to one historical source or one concrete application source.</p>
+      <div class="link-list">
+        <a class="link-item" href="#">
+          Beginner’s Guide
+          <small>General public introduction</small>
+        </a>
+        <a class="link-item" href="#">
+          The Beginning
+          <small>Original model and early corrections</small>
+        </a>
+        <a class="link-item" href="#">
+          White Paper
+          <small>More structured architectural explanation</small>
+        </a>
+        <
