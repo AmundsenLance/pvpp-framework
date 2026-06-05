@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PV-PP Framework Worked Example</title>
+  <meta name="description" content="A worked example showing how the PV-PP framework distinguishes what is available from what is viable in a wire-transfer exception review." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #17213d;
+      --text: #e8edf8;
+      --muted: #b7c2d9;
+      --accent: #8db3ff;
+      --accent-2: #b8d1ff;
+      --border: #263253;
+      --good: #90d4a4;
+      --warn: #f0c979;
+      --bad: #f19a9a;
+      --max: 960px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #09101f 0%, #0d1427 100%);
+      color: var(--text);
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 16, 31, 0.82);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 32px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 2vw, 1.2rem);
+      max-width: 850px;
+    }
+
+    .hero-panel {
+      margin-top: 26px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(23, 33, 61, 0.96) 0%, rgba(18, 26, 48, 0.96) 100%);
+      border-radius: 18px;
+      color: var(--muted);
+    }
+
+    main {
+      padding: 8px 0 72px;
+    }
+
+    section {
+      margin-top: 22px;
+      padding: 26px;
+      background: rgba(18, 26, 48, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.08rem;
+      color: var(--accent-2);
+    }
+
+    p {
+      margin: 10px 0 0;
+    }
+
+    ul {
+      margin: 12px 0 0 20px;
+      padding: 0;
+    }
+
+    li + li { margin-top: 8px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .label {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-top: 8px;
+    }
+
+    .good {
+      background: rgba(144, 212, 164, 0.12);
+      color: var(--good);
+      border: 1px solid rgba(144, 212, 164, 0.25);
+    }
+
+    .warn {
+      background: rgba(240, 201, 121, 0.12);
+      color: var(--warn);
+      border: 1px solid rgba(240, 201, 121, 0.25);
+    }
+
+    .bad {
+      background: rgba(241, 154, 154, 0.12);
+      color: var(--bad);
+      border: 1px solid rgba(241, 154, 154, 0.25);
+    }
+
+    .flow {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .step {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+    }
+
+    .step strong {
+      color: var(--text);
+    }
+
+    .link-row {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 820px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">PV-PP Framework</div>
+      <nav class="nav-links" aria-label="Section navigation">
+        <a href="#scenario">Scenario</a>
+        <a href="#available">Available vs viable</a>
+        <a href="#constraints">Constraints</a>
+        <a href="#outcome">Outcome</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap hero">
+    <div class="eyebrow">Worked Example</div>
+    <h1>PV-PP Framework Worked Example</h1>
+    <p class="subtitle">A concrete example showing how the framework distinguishes what is technically available from what is actually viable in a wire-transfer exception review.</p>
+    <div class="hero-panel">
+      Many frameworks can describe what a system is capable of doing. The harder question is whether a proposed action is viable under current authority, evidence, recovery, and state-validity conditions. This example shows why that distinction matters and why a locally attractive action can still be structurally invalid.
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="scenario">
+      <h2>Scenario</h2>
+      <p>A financial operations team receives a request to approve a wire transfer exception. The tools are available. The request looks urgent. Supporting materials appear to be present. A scalar or speed-first workflow may be tempted to ask only whether the transfer can be processed and whether local friction can be minimized.</p>
+      <p>The PV-PP question is different: is the action viable under current evidence, authority, recovery conditions, and domain state? The framework does not stop at visible availability. It asks whether execution remains structurally sound.</p>
+    </section>
+
+    <section id="available">
+      <h2>What is available versus what is viable</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Available</h3>
+          <p class="muted">The system may expose the wire tool, exception workflow, customer record, transaction screen, and approval path. These are real capabilities, but they do not by themselves settle whether the action should proceed.</p>
+          <div class="label warn">Technically reachable</div>
+        </div>
+        <div class="card">
+          <h3>Viable</h3>
+          <p class="muted">Viability asks whether the proposed action survives the governing checks that matter for this case: authority, evidence sufficiency, fraud risk, recovery options, compliance obligations, and the current decision state.</p>
+          <div class="label good">Structurally admissible</div>
+        </div>
+      </div>
+      <p>That difference is the heart of the example. The tool registry answers what is available. The PV-PP framework asks whether the action is viable enough to enter execution or approval.</p>
+    </section>
+
+    <section id="constraints">
+      <h2>Governing constraints</h2>
+      <p>In this scenario, several conditions are governing rather than compensatory. That means they are not just “costs” that can be outweighed by speed, convenience, or apparent business gain.</p>
+      <ul>
+        <li><strong>Authority:</strong> Does the requesting party actually have permission to authorize this exception?</li>
+        <li><strong>Evidence sufficiency:</strong> Are the supporting records current, complete, and adequate for this decision?</li>
+        <li><strong>Fraud / compliance exposure:</strong> Does the request create a risk profile that requires escalation or block?</li>
+        <li><strong>Recovery:</strong> If the action is wrong, is there a realistic path to containment or reversal?</li>
+        <li><strong>State validity:</strong> Is the system currently in a condition where the transfer can be responsibly evaluated at all?</li>
+      </ul>
+      <p>These conditions are the reason the framework is non-scalar here. Missing authority or broken recovery is not merely an inconvenience. It changes the admissibility of the action itself.</p>
+    </section>
+
+    <section>
+      <h2>Why a simple scalar ranking fails</h2>
+      <p>A scalar approach may rank the action highly because the request appears urgent, the client relationship looks important, and the operational path is available. On a one-score logic, those gains can swamp softer warning signals.</p>
+      <p>But in this case the warning signals are not merely softer. They are governing. If authority is unclear, evidence is stale, or recovery is implausible, a fast approval can look locally efficient while remaining globally fragile. Visible completion then becomes false success rather than real viability.</p>
+      <div class="label bad">Local attractiveness can hide structural invalidity</div>
+    </section>
+
+    <section>
+      <h2>How the PV-PP framework handles the case</h2>
+      <div class="flow">
+        <div class="step"><strong>1. Read the current state.</strong> Determine what is known, what is missing, and what domains govern this decision.</div>
+        <div class="step"><strong>2. Test admissibility.</strong> Ask whether authority, evidence, recovery, and domain conditions are strong enough for the action to remain viable.</div>
+        <div class="step"><strong>3. Separate viable from merely available.</strong> Do not confuse exposed tools or workflow options with justified execution.</div>
+        <div class="step"><strong>4. Escalate, block, or proceed only within the viable set.</strong> Optimization happens only after the governing conditions are satisfied.</div>
+      </div>
+      <p>That sequence is what makes the framework operational rather than rhetorical. It forces structural checks before apparent convenience is allowed to decide the case.</p>
+    </section>
+
+    <section id="outcome">
+      <h2>Outcome</h2>
+      <p>In the worked example, the right PV-PP result is not “approve because the tool exists” or “approve because the case is urgent.” The result depends on whether the action survives the governing filters. If authority is missing, evidence is insufficient, or recovery is not credible, the action should be blocked or escalated rather than optimized.</p>
+      <p>This is the point of the framework in practice: not every available action is viable, and not every visible completion counts as success.</p>
+    </section>
+
+    <section>
+      <h2>What this example shows</h2>
+      <ul>
+        <li>Value and capability are not the same thing.</li>
+        <li>Availability and viability are not the same thing.</li>
+        <li>Some conditions govern action rather than merely influencing it.</li>
+        <li>Pre-execution evaluation matters because downstream recovery may be weak or nonexistent.</li>
+        <li>Non-scalar structure becomes necessary when authority, evidence, safety, and recovery cannot be traded away.</li>
+      </ul>
+      <div class="link-row">
+        <a class="button" href="index.html">Back to the PV-PP Framework</a>
+        <a class="button" href="#">White Paper</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">PV-PP worked example page. Replace the placeholder white-paper link with the final public URL when ready.</div>
+  </footer>
+</body>
+</html>
